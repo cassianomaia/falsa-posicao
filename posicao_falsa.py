@@ -8,8 +8,6 @@ def func(x):
     return (math.pow(x,3) - math.pow(x,2) + 2)  # Função x³ - x² + 2
 
 # Calcula a raiz da função(x) dado o intevalo [a,b]
-
-
 def posicaoFalsa(a, b):
     if func(a) * func(b) >= 0:
         print("Você assumiu valores errados para a e b")
@@ -19,16 +17,16 @@ def posicaoFalsa(a, b):
 
     for i in range(MAX_ITER):
         # Procura o ponto que toca o eixo x
-        c = (a * func(b) - b * func(a)) / (func(b) - func(a))
-        print(i)
+        c = b - (func(b) * (b - a)) / (func(b) - func(a))
+        
         # Verifica se o ponto calculado é raiz
-        if func(c) == 0:
-            print("ae carai")
+        if func(float('%.4f' % c)) == 0:
+            print("Parou na interação: ", '%f' % i)
             break
         elif func(c) * func(a) < 0:
-            b = int(c)
+            b = c
         else:
-            a = int(c)
+            a = c
     print("O valor da raiz é : ", '%.4f' % c)
 
 
